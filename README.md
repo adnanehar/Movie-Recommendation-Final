@@ -43,7 +43,8 @@ https://movieapp1-vrqyzkhdgq-uc.a.run.app/
 
 
 ## Architecture
-![System Architecture (1)](https://github.com/adnanehar/Movie-Recommendation-Final/assets/140387810/ca6825c1-4d0a-4744-9d65-228d73232589)
+![System Architecture (2)](https://github.com/adnanehar/Movie-Recommendation-Final/assets/140387810/dc97be62-18e6-494b-adf6-af2aafa90699)
+
 
 
 ## Similarity Score :
