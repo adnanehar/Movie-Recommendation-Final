@@ -5,9 +5,36 @@
 ![Frontend](https://img.shields.io/badge/Frontend-HTML/CSS/JS-green)
 ![API](https://img.shields.io/badge/API-TMDB-fcba03)
 
-Content Based Recommender System recommends movies similar to the movie user likes and analyses the sentiments on the reviews given by the user for that movie.
+Movie Roulette is an extensive movie recommendation system that uses machine learning algorithms to tailor movie choices to users based on their likes, watching history, and comments. By monitoring user interactions and movie properties such as genre, actor, and narrative keywords, the system provides personalized suggestions based on individual preferences. Movie Roulette, with its smooth user interface and easy features, offers cinephiles a dynamic and engaging platform for discovering, exploring, and enjoying a curated selection of movies customized to their specific interests.
 
 The details of the movies(title, genre, runtime, rating, poster, etc) are fetched using an API by TMDB, https://www.themoviedb.org/documentation/api, and using the IMDB id of the movie in the API, I did web scraping to get the reviews given by the user in the IMDB site using `beautifulsoup4` and performed sentiment analysis on those reviews.
+
+## Motivation:
+
+The motivation behind the Content-Based Movie Roulette System is to create a sophisticated recommendation system for movie enthusiasts that goes beyond traditional approaches. By leveraging content-based filtering techniques and sentiment analysis, the system aims to provide personalized movie recommendations tailored to individual preferences while also considering the sentiment expressed by users in their feedback. The integration of Asynchronous JavaScript and XML technology enhances the user experience by enabling seamless, asynchronous communication between the client and server, resulting in faster and more responsive interactions.
+
+# Business Value:
+
+## Enhanced User Experience:
+The system enhances the user experience by offering personalized movie recommendations based on content similarity and sentiment analysis. This personalized approach fosters user engagement and satisfaction, leading to increased user retention and loyalty.
+
+## Improved Recommendation Accuracy: 
+By analyzing movie content and user feedback, the system provides more accurate and relevant recommendations, increasing the likelihood of users discovering movies that align with their tastes and preferences.
+
+## Increased User Interaction: 
+The integration of AJAX technology ensures a smooth and interactive browsing experience, allowing users to explore movie recommendations and provide feedback in real-time. This dynamic interaction encourages active participation and fosters a sense of community among users.
+
+# Metrics:
+## Precision and Recall: 
+Precision measures the proportion of recommended movies that are relevant to the user's preferences, while recall measures the proportion of relevant movies that are successfully recommended. High precision and recall indicate that the system effectively recommends movies that match the user's interests.
+
+## Sentiment Analysis Accuracy: 
+The accuracy of sentiment analysis algorithms is evaluated based on their ability to correctly identify and classify the sentiment expressed in user feedback. High accuracy ensures that the system can reliably gauge user sentiment and incorporate it into the recommendation process.
+
+## User Engagement Metrics: 
+User engagement metrics, such as the number of active users, session duration, and interaction frequency, provide insights into the level of user engagement with the system. Increasing user engagement indicates that the system is successfully capturing and maintaining user interest.
+
+
 
 ## How to get the API key?
 
@@ -47,7 +74,11 @@ Cosine similarity is a metric used to measure how similar the documents are irre
 4. [List of movies in 2019](https://en.wikipedia.org/wiki/List_of_American_films_of_2019)
 5. # [List of movies in 2020](https://en.wikipedia.org/wiki/List_of_American_films_of_2020)
 
-# Movie-Application
+## The APP
+<img width="960" alt="app" src="https://github.com/adnanehar/My_Movie_Recommender/assets/140387810/5d058031-4d7f-48a5-b4c4-b13ec23e975c">
+
+<img width="960" alt="app1" src="https://github.com/adnanehar/My_Movie_Recommender/assets/140387810/c151d895-83cc-4f85-86f5-7940931742cd">
+
 
 ### ML System Architecture for Movie Recommendation System
 
@@ -98,43 +129,6 @@ Frameworks like TensorFlow or PyTorch for deep learning models.
 Streamlit or Flask for building user interfaces.
 Cloud platforms like AWS, GCP, or Azure for model deployment and scalability.
 
-## Architecture:
-
-+---------------------------------------------------------+
-| ARCHITECTURE |
-+----------------------+ +----------------------+ |
-| | | | |
-| Data Collection +---->+ Data Preprocessing +--+----->+ |
-| (Tweets & Articles) | | (ZenML Pipeline) | | | |
-| Storage: Local/HDFS | | | | | |
-+-----------+----------+ +-----------+---------+ | | |
-^ | | | | |
-| v v | | |
-| +----------------------+ +----------------------+ | | |
-| | | | | | | |
-| | Model Training , | | Model Serving | | | |
-| | Validation & Testing | | (Flask) | | | |
-| | (Hugging Face | | | | | |
-| | Transformers, ZenML, | | Docker Container | | | |
-| | Pytest) | | (Deployment & Run) | | | |
-| | | | | | | |
-| +----------------------+ +----------------------+ | | |
-| | | | | |
-| v | | | |
-| +---------------------+ | | | |
-| | Frontend | | | | |
-| | Interaction | | | | |
-| | (User inputs, | | | | |
-| | Display results) | | | | |
-| | | | | | |
-+---------------------+------------+-----------------+ | |
-^ |
-| |
-+---------------+ | |
-| | Storage | |
-| | (Local Machine) | |
-| +----------------------+ |
-+---------------------------------------------------------+
 
 ## Conclusion:
 
