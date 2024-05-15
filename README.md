@@ -43,6 +43,7 @@ https://movieapp1-vrqyzkhdgq-uc.a.run.app/
 
 
 ## Architecture
+
 ![System Architecture (2)](https://github.com/adnanehar/Movie-Recommendation-Final/assets/140387810/dc97be62-18e6-494b-adf6-af2aafa90699)
 
 
