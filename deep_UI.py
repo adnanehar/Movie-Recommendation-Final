@@ -2,14 +2,15 @@ import streamlit as st
 import pickle
 import numpy as np
 import pandas as pd
+from aequitas.preprocessing import preprocess_input_df
+from aequitas.group import Group
+from aequitas.plotting import Plot
 
 # Load the model from the pkl file
-
 with open('deep_model_data.pkl', 'rb') as f:
-    df_filterd, smd, id_map, cosine_similarity, user_embeddings, movie_embeddings, user_id_mapping, movie_id_mapping = pickle.load(f)
+    df_filtered, smd, id_map, cosine_similarity, user_embeddings, movie_embeddings, user_id_mapping, movie_id_mapping = pickle.load(f)
 
-
-
+# Function to predict similar movies
 def predict_similar_movies(userId, title, movie_count):
     movieId = id_map.loc[title]['movieId'].astype('int')
     # Map the userId and movieId to the corresponding integer values
@@ -50,5 +51,35 @@ movie_count = st.number_input('Enter the number of recommendations you want', mi
 # Make recommendations based on user input
 if st.button('Get Recommendations'):
     predict_similar_movies(userId, title, movie_count)
+
+    # Load the movies metadata from CSV
+    movies_df = pd.read_csv('movies_metadata.csv')
+
+    # Select relevant columns for Aequitas analysis
+    selected_columns = ['budget', 'imdb_id']
+    movies_selected = movies_df[selected_columns]
+
     
-  
+    movies_selected['score'] = 94
+    movies_selected['label_value'] = 20
+
+    # Preprocess data for Aequitas
+    aequitas_df_processed, _ = preprocess_input_df(movies_selected)
+    g = Group()
+    xtab, _ = g.get_crosstabs(aequitas_df_processed)
+    
+    # Check for zero division error
+    if xtab.empty:
+        st.write("No data available for fairness evaluation.")
+    else:
+        absolute_metrics = g.list_absolute_metrics(xtab)
+        st.write("Absolute Metrics")
+        st.write(absolute_metrics)
+        st.write(xtab)
+
+        p = Plot()
+        st.write("Fairness Metrics Plots")
+        
+        # Specify a fairness metric for plotting (e.g., 'ppr', 'pprev', 'fdr', 'for', etc.)
+        fairness_metric = 'ppr'
+        st.write(p.plot_group_metric_all(xtab, metrics=[fairness_metric]))
